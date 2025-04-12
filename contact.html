@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FiqhFacile - Contact</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <h1 class="logo">FiqhFacile</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="cours.html">Cours</a></li>
+          <li><a href="#">Quiz</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-section container">
+      <h2>Contacte-nous</h2>
+      <p>Tu as une question, une suggestion ou tu veux contribuer au projet ? N'hésite pas à nous écrire.</p>
+      <form class="contact-form" action="mailto:contact@fiqhfacile.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Ton nom" required>
+        <input type="email" name="email" placeholder="Ton email" required>
+        <textarea name="message" rows="6" placeholder="Ton message..." required></textarea>
+        <button type="submit" class="btn">Envoyer</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 FiqhFacile - Tous droits réservés.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
