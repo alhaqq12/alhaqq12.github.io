@@ -146,3 +146,41 @@ body {
     gap: 1rem;
   }
 }
+
+/* Cours page */
+.cours-hero {
+  background: #ffffff;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.grid-cours {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.cours-card {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cours-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.cours-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  color: #00695c;
+}
+
+.cours-card p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
