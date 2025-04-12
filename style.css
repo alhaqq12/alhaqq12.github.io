@@ -252,3 +252,27 @@ main {
 .footer {
   flex-shrink: 0;
 }
+
+/* Page niveau 1 - structure des cours */
+.niveau-main {
+  padding: 3rem 0;
+  background-color: #fdfdfd;
+}
+
+.cours-section {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cours-section h3 {
+  color: #00695c;
+  margin-bottom: 0.5rem;
+}
+
+.cours-section p {
+  font-size: 1rem;
+  color: #444;
+}
