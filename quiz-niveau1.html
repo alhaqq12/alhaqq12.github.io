@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FiqhFacile - Quiz Niveau 1</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .quiz-container {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .quiz-question {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .quiz-options {
+      list-style: none;
+      padding: 0;
+    }
+    .quiz-options li {
+      margin-bottom: 1rem;
+    }
+    .quiz-options button {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f7f7f7;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .quiz-options button:hover {
+      background: #e0f2f1;
+    }
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .btn-next {
+      margin-top: 2rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <h1 class="logo">FiqhFacile</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="cours.html">Cours</a></li>
+          <li><a href="quiz.html" class="active">Quiz</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="quiz-container">
+      <h2>Quiz – Les 13 attributs de Allāh</h2>
+      <div class="quiz-question">Lequel de ces attributs <strong>n’est pas</strong> parmi les 13 obligatoires de Allāh ?</div>
+      <ul class="quiz-options">
+        <li><button onclick="checkAnswer(this, false)">La vie</button></li>
+        <li><button onclick="checkAnswer(this, false)">La volonté</button></li>
+        <li><button onclick="checkAnswer(this, true)">La pauvreté</button></li>
+        <li><button onclick="checkAnswer(this, false)">La toute-puissance</button></li>
+      </ul>
+      <div class="feedback" id="feedback"></div>
+      <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()">Question suivante</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 FiqhFacile - Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    function checkAnswer(button, isCorrect) {
+      const feedback = document.getElementById("feedback");
+      const allButtons = document.querySelectorAll(".quiz-options button");
+      allButtons.forEach(btn => btn.disabled = true);
+
+      if (isCorrect) {
+        button.style.backgroundColor = "#c8e6c9";
+        feedback.innerHTML = "✅ Bonne réponse ! La pauvreté ne convient pas à Allāh.";
+      } else {
+        button.style.backgroundColor = "#ffcdd2";
+        feedback.innerHTML = "❌ Mauvaise réponse ! La bonne réponse était : La pauvreté.";
+      }
+
+      document.getElementById("nextBtn").style.display = "inline-block";
+    }
+
+    function nextQuestion() {
+      alert("In châ’ Allah les autres questions arrivent bientôt !");
+    }
+  </script>
+
+</body>
+</html>
