@@ -272,3 +272,38 @@ main {
 .footer {
   flex-shrink: 0;
 }
+/* Style pour l’introduction sur l’importance d’apprendre */
+.importance {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.importance h2 {
+  color: #00695c;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.importance p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.importance blockquote {
+  background-color: #f1fdfc;
+  border-left: 5px solid #009688;
+  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  color: #004d40;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
