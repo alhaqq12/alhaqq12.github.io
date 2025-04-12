@@ -253,26 +253,22 @@ main {
   flex-shrink: 0;
 }
 
-/* Page niveau 1 - structure des cours */
-.niveau-main {
-  padding: 3rem 0;
-  background-color: #fdfdfd;
+
+/* Footer global - reste en bas même sur les pages courtes */
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-.cours-section {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+body {
+  display: flex;
+  flex-direction: column;
 }
 
-.cours-section h3 {
-  color: #00695c;
-  margin-bottom: 0.5rem;
+main {
+  flex: 1 0 auto;
 }
 
-.cours-section p {
-  font-size: 1rem;
-  color: #444;
+.footer {
+  flex-shrink: 0;
 }
