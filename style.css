@@ -147,7 +147,7 @@ body {
   }
 }
 
-/* Cours page */
+/* Ancienne section des cours (remplacée) */
 .cours-hero {
   background: #ffffff;
   padding: 4rem 0;
@@ -183,4 +183,54 @@ body {
 .cours-card p {
   font-size: 1rem;
   margin-bottom: 1.5rem;
+}
+
+/* Cours page - amélioration responsive et design pro */
+.cours-hero {
+  background: #ffffff;
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+
+.cours-list {
+  padding: 2rem 0 4rem;
+}
+
+.grid-cours {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.cours-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cours-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.cours-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #00695c;
+}
+
+.cours-card p {
+  flex-grow: 1;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
 }
