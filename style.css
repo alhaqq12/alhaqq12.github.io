@@ -340,7 +340,7 @@ main {
   outline: none;
   box-shadow: 0 0 5px rgba(0,105,92,0.3);
 }
-/* ===== PROFIL UTILISATEUR ===== */
+/* Profil utilisateur */
 .profile-container {
   max-width: 600px;
   margin: 4rem auto;
@@ -356,12 +356,24 @@ main {
   margin-bottom: 1rem;
 }
 
-.profile-container p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+.profile-container h3 {
+  margin-top: 2rem;
+  color: #333;
+}
+
+.profile-container ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.profile-container ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
 }
 
 .profile-container button {
+  margin-top: 2rem;
   padding: 0.9rem 2rem;
   font-size: 1rem;
   border: none;
