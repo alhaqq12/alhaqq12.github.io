@@ -5,18 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FiqhFacile - Mon Profil</title>
   <link rel="stylesheet" href="style.css" />
-  </head>
+</head>
 <body>
 
   <div class="profile-container">
     <h2>Mon profil</h2>
     <p id="user-email">Chargement...</p>
+
+    <h3>📚 Progression :</h3>
+    <ul id="progress-list">
+      <li>Chargement des données...</li>
+    </ul>
+
     <button onclick="logout()">Se déconnecter</button>
   </div>
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"></script>
+
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyCyJcc6CWbLRoWWzW6Vy4mUeinPeSlMYNA",
@@ -24,18 +32,45 @@
       projectId: "fiqhfacile",
       storageBucket: "fiqhfacile.firebasestorage.app",
       messagingSenderId: "525035450795",
-      appId: "1:525035450795:web:c53c2f8351398218e222ee",
-      measurementId: "G-K5GF5634ZG"
+      appId: "1:525035450795:web:c53c2f8351398218e222ee"
     };
 
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+    const db = firebase.firestore();
 
     auth.onAuthStateChanged(user => {
       if (user) {
         document.getElementById("user-email").innerText = "Email : " + user.email;
+        db.collection("progression").doc(user.uid).get().then(doc => {
+          const data = doc.data() || {};
+          const list = document.getElementById("progress-list");
+          list.innerHTML = "";
+
+          const cours = {
+            niveau1_lecon1: "Niveau 1 – Leçon 1 : Les 13 attributs de Allāh"
+          };
+
+          let coursCompletes = 0;
+          let totalCours = Object.keys(cours).length;
+
+          for (let key in cours) {
+            const li = document.createElement("li");
+            if (data[key]) {
+              li.textContent = "✅ " + cours[key];
+              coursCompletes++;
+            } else {
+              li.textContent = "❌ " + cours[key];
+            }
+            list.appendChild(li);
+          }
+
+          const status = document.createElement("p");
+          status.textContent = `Tu as complété ${coursCompletes} cours sur ${totalCours}`;
+          list.appendChild(status);
+        });
       } else {
-        window.location.href = "login.html"; // redirige vers login si pas connecté
+        window.location.href = "login.html";
       }
     });
 
