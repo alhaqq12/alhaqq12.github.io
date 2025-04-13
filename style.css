@@ -374,3 +374,25 @@ main {
 .profile-container button:hover {
   background-color: #004d40;
 }
+.validate-section {
+  text-align: center;
+  margin: 2rem auto;
+}
+.validate-section button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #009688;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.validate-section button:hover {
+  background-color: #00796b;
+}
+.message-feedback {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: green;
+}
