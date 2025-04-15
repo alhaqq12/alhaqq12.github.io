@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FiqhFacile - Niveau 3</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-container">
+    <h1 class="logo">FiqhFacile</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cours.html" class="active">Cours</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Connexion</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h2 class="text-center">📘 Niveau 3 – Sirāt al-Moustaqīm</h2>
+  <p class="text-center">Coche les chapitres que tu as terminés. La progression est enregistrée si tu es connecté.</p>
+
+  <div class="progress-wrapper">
+    <div class="progress-bar">
+      <div id="progress-value" class="progress-value" style="width: 0%;">0%</div>
+    </div>
+  </div>
+
+  <ul id="chapitres-list" class="chapter-list"></ul>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 FiqhFacile - Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCyJcc6CWbLRoWWzW6Vy4mUeinPeSlMYNA",
+  authDomain: "fiqhfacile.firebaseapp.com",
+  projectId: "fiqhfacile",
+  storageBucket: "fiqhfacile.firebasestorage.app",
+  messagingSenderId: "525035450795",
+  appId: "1:525035450795:web:c53c2f8351398218e222ee"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const chapitres = [{"id": "niveau3_lecon1", "titre": "Le droit le plus éminent que Dieu a sur Ses esclaves", "pourcentage": 2.63}, {"id": "niveau3_lecon2", "titre": "Du sens des deux Témoignages", "pourcentage": 2.63}, {"id": "niveau3_lecon3", "titre": "De l’obligation que doit observer tout responsable (moukallaf)", "pourcentage": 2.63}, {"id": "niveau3_lecon4", "titre": "Aucune religion autre que l’Islām n’est véritable", "pourcentage": 2.63}, {"id": "niveau3_lecon5", "titre": "Du Jugement relatif à celui qui se réclame musulman tout en contredisant l’Islām", "pourcentage": 2.63}, {"id": "niveau3_lecon6", "titre": "Éclaircissements des sortes de mécréance", "pourcentage": 2.63}, {"id": "niveau3_lecon7", "titre": "La mécréance par la croyance", "pourcentage": 2.63}, {"id": "niveau3_lecon8", "titre": "La mécréance par l’acte", "pourcentage": 2.63}, {"id": "niveau3_lecon9", "titre": "La mécréance par la parole", "pourcentage": 2.63}, {"id": "niveau3_lecon10", "titre": "De l’exception dans la mécréance par la parole", "pourcentage": 2.63}, {"id": "niveau3_lecon11", "titre": "Remarque importante", "pourcentage": 2.63}, {"id": "niveau3_lecon12", "titre": "De la classification de la mécréance", "pourcentage": 2.63}, {"id": "niveau3_lecon13", "titre": "L’assimilation", "pourcentage": 2.63}, {"id": "niveau3_lecon14", "titre": "La dénégation", "pourcentage": 2.63}, {"id": "niveau3_lecon15", "titre": "L’athéisme", "pourcentage": 2.63}, {"id": "niveau3_lecon16", "titre": "La préservation contre l’Enfer", "pourcentage": 2.63}, {"id": "niveau3_lecon17", "titre": "Le commencement de la création", "pourcentage": 2.63}, {"id": "niveau3_lecon18", "titre": "La prééternité de Dieu", "pourcentage": 2.63}, {"id": "niveau3_lecon19", "titre": "L’exemption de Dieu de la spatialisation", "pourcentage": 2.63}, {"id": "niveau3_lecon20", "titre": "Les 13 attributs de Dieu (détaillés un par un)", "pourcentage": 2.63}, {"id": "niveau3_lecon21", "titre": "La perfection absolue de tous les attributs de Dieu", "pourcentage": 2.63}, {"id": "niveau3_lecon22", "titre": "L’unicité de Dieu", "pourcentage": 2.63}, {"id": "niveau3_lecon23", "titre": "Le Tawḥīd dans la Seigneurie", "pourcentage": 2.63}, {"id": "niveau3_lecon24", "titre": "Le Tawḥīd dans l’adoration", "pourcentage": 2.63}, {"id": "niveau3_lecon25", "titre": "Ce que signifie « Dieu est au-dessus du Trône »", "pourcentage": 2.63}, {"id": "niveau3_lecon26", "titre": "Du sens des versets équivoques", "pourcentage": 2.63}, {"id": "niveau3_lecon27", "titre": "L’erreur des anthropomorphistes", "pourcentage": 2.63}, {"id": "niveau3_lecon28", "titre": "La voie des gens de la vérité dans l’interprétation des textes", "pourcentage": 2.63}, {"id": "niveau3_lecon29", "titre": "L’imitation aveugle et ses conséquences", "pourcentage": 2.63}, {"id": "niveau3_lecon30", "titre": "La définition de la secte sauvée", "pourcentage": 2.63}, {"id": "niveau3_lecon31", "titre": "L’obligation de suivre la vérité", "pourcentage": 2.63}, {"id": "niveau3_lecon32", "titre": "De la voie à suivre pour celui qui désire la guidée", "pourcentage": 2.63}, {"id": "niveau3_lecon33", "titre": "L’ordonnance d’avertir contre les innovateurs", "pourcentage": 2.63}, {"id": "niveau3_lecon34", "titre": "Du statut des groupes égarés", "pourcentage": 2.63}, {"id": "niveau3_lecon35", "titre": "Les plus graves des égarés", "pourcentage": 2.63}, {"id": "niveau3_lecon36", "titre": "L’obligation de fuir les gens de l’égarement", "pourcentage": 2.63}, {"id": "niveau3_lecon37", "titre": "L’autorisation de citer leurs noms", "pourcentage": 2.63}, {"id": "niveau3_lecon38", "titre": "Conclusion", "pourcentage": 2.63}];
+
+let currentUser = null;
+let savedProgress = {};
+
+function updateProgressBar() {
+  const total = chapitres.length;
+  const checked = document.querySelectorAll('input[type=checkbox]:checked').length;
+  const percent = Math.round((checked / total) * 100);
+  const progressBar = document.getElementById("progress-value");
+  progressBar.style.width = percent + "%";
+  progressBar.innerText = percent + "%";
+}
+
+function updateProgressionInFirebase() {
+  if (!currentUser) return;
+  const checkedStates = {};
+  document.querySelectorAll('input[type=checkbox]').forEach(input => {
+    checkedStates[input.dataset.id] = input.checked;
+  });
+  db.collection("progression").doc(currentUser.uid).set(checkedStates, { merge: true });
+}
+
+function createChecklist() {
+  const list = document.getElementById("chapitres-list");
+  list.innerHTML = "";
+  chapitres.forEach(chap => {
+    const li = document.createElement("li");
+    li.className = "chapter-item";
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.dataset.id = chap.id;
+    checkbox.checked = savedProgress[chap.id] || false;
+    checkbox.onchange = () => {
+      updateProgressBar();
+      updateProgressionInFirebase();
+    };
+    label.appendChild(checkbox);
+    label.append(" " + chap.titre);
+    li.appendChild(label);
+    list.appendChild(li);
+  });
+  updateProgressBar();
+}
+
+auth.onAuthStateChanged(user => {
+  currentUser = user;
+  if (user) {
+    db.collection("progression").doc(user.uid).get().then(doc => {
+      savedProgress = doc.data() || {};
+      createChecklist();
+    });
+  } else {
+    createChecklist(); // même sans être connecté
+  }
+});
+</script>
+
+</body>
+</html>
