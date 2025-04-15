@@ -73,13 +73,50 @@
   <a href="al-qawl-al-jaliyy.pdf" class="btn" download>Télécharger le livre Al-Qawl al-Jaliyy (PDF)</a>
 </section>
 
-  </main>
+  </main> 
+  <section class="validate-section">
+  <button onclick="validerCours()">✅ Marquer ce cours comme terminé</button>
+  <div id="feedback" class="message-feedback"></div>
+</section>
 
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 FiqhFacile - Tous droits réservés.</p>
     </div>
   </footer>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"></script>
 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCyJcc6CWbLRoWWzW6Vy4mUeinPeSlMYNA",
+    authDomain: "fiqhfacile.firebaseapp.com",
+    projectId: "fiqhfacile",
+    storageBucket: "fiqhfacile.firebasestorage.app",
+    messagingSenderId: "525035450795",
+    appId: "1:525035450795:web:c53c2f8351398218e222ee"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  function validerCours() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        const uid = user.uid;
+        db.collection("progression").doc(uid).set({
+          niveau2_lecon1: true
+        }, { merge: true }).then(() => {
+          document.getElementById("feedback").innerText = "✅ Ce cours a été enregistré comme terminé !";
+        });
+      } else {
+        document.getElementById("feedback").innerText = "❌ Connecte-toi pour enregistrer ta progression.";
+      }
+    });
+  }
+</script>
 </body>
 </html>
